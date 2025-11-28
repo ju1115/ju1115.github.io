@@ -1,26 +1,93 @@
+/* ✅ 1. 폰트 Import (이게 있어야 Pretendard가 보입니다) */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* ✅ 2. 폰트 패밀리 정의 */
+  --font-pretendard: "Pretendard", sans-serif;
+
+  /* =========================================
+     Color System (OKLCH)
+     ========================================= */
+  --color-emerald-500: oklch(69.59% 0.1491 162.47deg);
+  --color-red-500: oklch(63.7% 0.237 25.33deg);
+  --color-base-white: oklch(100% 0 none);
+
+  --color-gray-950: oklch(12.96% 0.0274 261.69deg);
+  --color-gray-900: oklch(21.01% 0.0318 264.67deg);
+  --color-gray-800: oklch(27.81% 0.0296 256.85deg);
+  --color-gray-700: oklch(37.29% 0.0306 259.73deg);
+  --color-gray-600: oklch(44.61% 0.0263 256.8deg);
+  --color-gray-500: oklch(55.1% 0.0233 264.37deg);
+  --color-gray-400: oklch(71.37% 0.0191 261.33deg);
+  --color-gray-300: oklch(87.17% 0.0093 258.36deg);
+  --color-gray-200: oklch(92.76% 0.0058 264.6deg);
+  --color-gray-100: oklch(96.7% 0.0028 264.7deg);
+  --color-gray-50: oklch(98.46% 0.0017 247.73deg);
+
+  --color-background: var(--color-base-white);
+  --color-foreground: var(--color-gray-900);
+
+  /* =========================================
+     Typography System
+     * font-weight: 700(Bold), 600(SemiBold), 400(Regular)
+     ========================================= */
+
+  /* Heading */
+  --text-h1: 3.75rem;
+  --text-h1--line-height: 1.2;
+  --text-h1--font-weight: 700; /* Bold */
+
+  --text-h2: 2.25rem;
+  --text-h2--line-height: 1.1;
+  --text-h2--font-weight: 600; /* SemiBold */
+
+  --text-h3: 1.875rem;
+  --text-h3--line-height: 1.2;
+  --text-h3--font-weight: 600; /* SemiBold */
+
+  --text-h3-bold: 1.875rem;
+  --text-h3-bold--line-height: 1.2;
+  --text-h3-bold--font-weight: 700; /* Bold */
+
+  /* Subtitle (main) - 이미지 기준 */
+  --text-subtitle: 1.25rem;
+  --text-subtitle--line-height: 1.4;
+  --text-subtitle--font-weight: 400; /* Regular */
+
+  --text-subtitle-semibold: 1.25rem;
+  --text-subtitle-semibold--line-height: 1.4;
+  --text-subtitle-semibold--font-weight: 600; /* 이게 SemiBold 처리! */
+
+  /* Body Styles */
+  --text-body-1: 1.125rem;
+  --text-body-1--line-height: 1.55;
+  --text-body-1--font-weight: 400;
+
+  --text-body-2: 1rem;
+  --text-body-2--line-height: 1.5;
+  --text-body-2--font-weight: 400;
+
+  --text-body-3: 0.875rem;
+  --text-body-3--line-height: 1.42;
+  --text-body-3--font-weight: 400;
+
+  /* =========================================
+     Shadow System
+     ========================================= */
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+  --shadow-lg: 0 10px 8px 0 rgb(0 0 0 / 0.04), 0 4px 3px 0 rgb(0 0 0 / 0.1);
+
+  --shadow-2xl: 0 25px 25px 0 rgb(0 0 0 / 0.15);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+@variant dark (&:where(.dark, .dark *));
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  /* ✅ 3. 여기서 폰트를 전체 적용 */
+  font-family: var(--font-pretendard);
 }
