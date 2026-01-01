@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { FaReact, FaJava, FaDocker, FaGitAlt } from 'react-icons/fa';
 import { SiNextdotjs, SiSpringboot, SiMysql, SiApachekafka } from 'react-icons/si';
 import Badge from '../common/Badge';
+import profileImg from '@/assets/images/profile_side_view.jpg';
 
 // 🛠️ 스킬 데이터 정의 (이름 + 아이콘)
 const SKILLS = [
@@ -25,20 +26,29 @@ export default function About() {
           {/* ==========================
               1. 왼쪽: 프로필 이미지 (Offset 효과)
              ========================== */}
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-[400px] md:mx-0">
-            {/* 뒤에 깔리는 회색 박스 (피그마의 그림자 역할) */}
-            <div className="absolute top-6 left-6 -z-10 h-full w-full rounded-[32px] bg-gray-100 dark:bg-gray-800"></div>
-
-            {/* 실제 사진 */}
-            <div className="relative h-full w-full overflow-hidden rounded-[32px] bg-gray-200 shadow-lg">
-              <Image
-                src="/"
-                alt="About Profile"
-                fill
-                className="object-cover transition-transform duration-500 hover:scale-105"
-              />
-            </div>
-          </div>
+                    <div className="relative aspect-square w-full max-w-[400px] md:aspect-[4/5]">
+                      {/* 1. 뒤에 깔리는 그림자 박스 (Offset 효과용) */}
+                      <div className="absolute top-4 right-4 h-full w-full rounded-[32px] bg-gray-200 dark:bg-gray-800 "></div>
+          
+                      {/* 2. 실제 사진 영역 */}
+          
+                      
+                      {/* [수정 포인트 1] 부모 div: 그림자(shadow-xl) 담당, overflow-hidden 제거 */}
+                      <div className="relative h-full w-full rounded-[32px] ">
+                        
+                        {/* [수정 포인트 2] 자식 div: 이미지 클리핑(overflow-hidden) 담당 */}
+                        {/* rounded-[32px]는 부모와 맞춰줘야 모서리가 안 튀어나옵니다 */}
+                        {/* <div className="h-full w-full overflow-hidden rounded-[32px]"> */}
+                          <Image 
+                            src={profileImg} 
+                            alt="Profile" 
+                            fill 
+                            className="rounded-[32px] object-cover" 
+                            priority 
+                          />
+                        {/* </div> */}
+                      </div>
+                    </div>
 
           {/* ==========================
               2. 오른쪽: 소개 & 스킬

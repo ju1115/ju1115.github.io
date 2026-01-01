@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { FaGithub, FaMapMarkerAlt, FaCheckCircle } from 'react-icons/fa'; // 아이콘 불러오기
-
+import profileImg from '@/assets/images/profile_front_view.jpg';
 export default function Hero() {
   return (
     <section
@@ -9,7 +9,7 @@ export default function Hero() {
     >
       <div className="mx-auto w-full max-w-[1440px] px-5 md:px-[100px]">
         {/* 반응형 레이아웃: 모바일(세로) -> 데스크탑(가로, 양쪽 정렬) */}
-        <div className="flex flex-col items-center justify-between gap-12 md:flex-row md:gap-0">
+        <div className="flex flex-col items-center justify-between gap-12 md:flex-row md:gap-24">
           {/* ==========================
               1. 왼쪽: 텍스트 & 정보 그룹 
              ========================== */}
@@ -57,17 +57,31 @@ export default function Hero() {
               </div>
             </div>
           </div>
-
+          
           {/* ==========================
               2. 오른쪽: 프로필 이미지 (Offset 효과)
              ========================== */}
           <div className="relative aspect-square w-full max-w-[400px] md:aspect-[4/5]">
-            {/* 뒤에 깔리는 그림자 박스 (Absolute) */}
-            <div className="absolute top-4 left-4 -z-10 h-full w-full rounded-[32px] bg-gray-200 dark:bg-gray-800"></div>
+            {/* 1. 뒤에 깔리는 그림자 박스 (Offset 효과용) */}
+            <div className="absolute top-4 left-4 h-full w-full rounded-[32px] bg-gray-200 dark:bg-gray-800 "></div>
 
-            {/* 실제 사진 (Relative) */}
-            <div className="relative h-full w-full overflow-hidden rounded-[32px] shadow-xl">
-              <Image src="/" alt="Profile" fill className="object-cover" priority />
+            {/* 2. 실제 사진 영역 */}
+
+            
+            {/* [수정 포인트 1] 부모 div: 그림자(shadow-xl) 담당, overflow-hidden 제거 */}
+            <div className="relative h-full w-full rounded-[32px] ">
+              
+              {/* [수정 포인트 2] 자식 div: 이미지 클리핑(overflow-hidden) 담당 */}
+              {/* rounded-[32px]는 부모와 맞춰줘야 모서리가 안 튀어나옵니다 */}
+              {/* <div className="h-full w-full overflow-hidden rounded-[32px]"> */}
+                <Image 
+                  src={profileImg} 
+                  alt="Profile" 
+                  fill 
+                  className="rounded-[32px] object-cover" 
+                  priority 
+                />
+              {/* </div> */}
             </div>
           </div>
         </div>
