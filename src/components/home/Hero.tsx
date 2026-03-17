@@ -38,7 +38,7 @@ export default function Hero() {
                 href="https://github.com/ju1115"
                 target="_blank"
                 rel="noreferrer"
-                className="flex cursor-pointer items-center gap-3 text-gray-700 transition-colors hover:text-emerald-500 dark:text-gray-300"
+                className="inline-flex cursor-pointer items-center gap-3 text-gray-700 transition-colors hover:text-emerald-500 dark:text-gray-300 relative z-10"
               >
                 <FaGithub size={20} />
                 <span className="font-medium">GitHub 확인하기</span>
